@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Alamin Ali — Profile | NoteHub</title>
+    <meta name="description" content="View Alamin Ali's NoteHub profile, uploaded notes, downloads and community stats." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+  <body data-page="profile">
+    <div id="site-nav"></div>
+
+    <main class="container page-body">
+      <header class="profile-header">
+        <span class="avatar avatar-lg" aria-hidden="true">AA</span>
+        <div>
+          <h1>Alamin Ali</h1>
+          <p class="profile-role">Student &bull; Programmer</p>
+          <p class="profile-bio">Passionate about learning and sharing knowledge with the NoteHub community.</p>
+        </div>
+        <a class="btn btn-secondary" href="settings.html">Edit Profile</a>
+      </header>
+
+      <div class="stat-row">
+        <div class="stat"><strong>264</strong><span>Notes</span></div>
+        <div class="stat"><strong>3.2K</strong><span>Downloads</span></div>
+        <div class="stat"><strong>120K</strong><span>Views</span></div>
+        <div class="stat"><strong id="bookmarkCount">0</strong><span>Bookmarks</span></div>
+      </div>
+
+      <nav class="profile-tabs" aria-label="Profile sections">
+        <a href="profile.html" class="active">Overview</a>
+        <a href="#my-notes">My Notes</a>
+        <a href="bookmarks.html">Bookmarks</a>
+        <a href="#contributors">Followers</a>
+        <a href="#contributors">Following</a>
+        <a href="settings.html">Settings</a>
+      </nav>
+
+      <section class="section" id="my-notes">
+        <div class="section-head">
+          <h2>My Notes</h2>
+          <a class="btn-text" href="upload.html">Upload new</a>
+        </div>
+        <div class="grid grid-3" id="myNotes"></div>
+      </section>
+
+      <section class="section" id="contributors">
+        <div class="section-head">
+          <h2>Top Contributors</h2>
+        </div>
+        <div class="grid grid-4" id="followList"></div>
+      </section>
+    </main>
+
+    <div id="site-footer"></div>
+    <div id="site-bottom-nav"></div>
+
+    <script src="global.js"></script>
+    <script src="profile.js"></script>
+  </body>
+</html>

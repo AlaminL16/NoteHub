@@ -1,0 +1,143 @@
+/* NoteHub – home / discover page */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  align-items: center;
+  gap: 32px;
+  padding: 48px 0 8px;
+}
+
+.hero h1 {
+  font-size: 40px;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.hero p {
+  color: var(--secondary);
+  font-size: 16px;
+  max-width: 460px;
+}
+
+.hero-search {
+  position: relative;
+  max-width: 480px;
+  margin: 22px 0 20px;
+}
+
+.hero-search input {
+  padding-left: 44px;
+  min-height: 52px;
+  box-shadow: var(--shadow-sm);
+}
+
+.hero-search svg {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: var(--secondary);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.hero-art {
+  display: grid;
+  place-items: center;
+}
+
+.hero-art img {
+  width: 100%;
+  max-width: 420px;
+}
+
+.cat-scroll {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.contributors {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.contributor {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.contributor .info {
+  min-width: 0;
+}
+
+.contributor strong {
+  display: block;
+  font-size: 15px;
+}
+
+.contributor span {
+  font-size: 13px;
+  color: var(--secondary);
+}
+
+.recent-list {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.recent-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: center;
+  padding: 14px 18px;
+  border-bottom: 1px solid var(--border);
+}
+
+.recent-item:last-child {
+  border-bottom: 0;
+}
+
+.recent-item strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.cta {
+  background: var(--primary);
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 34px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+}
+
+.cta h2 {
+  color: var(--white);
+  margin: 0 0 6px;
+}
+
+.cta p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.85);
+}

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Settings | NoteHub</title>
+    <meta name="description" content="Manage your NoteHub account, interests, notifications, security and appearance settings." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="global.css" />
+    <link rel="stylesheet" href="profile.css" />
+    <link rel="stylesheet" href="responsive.css" />
+  </head>
+  <body data-page="settings">
+    <div id="site-nav"></div>
+
+    <main class="container page-body">
+      <h1>Settings</h1>
+      <p class="muted">Manage your account and preferences.</p>
+
+      <div class="settings-layout" style="margin-top: 22px">
+        <nav class="settings-nav" aria-label="Settings sections">
+          <a href="#account">Account</a>
+          <a href="#preferences">Preferences</a>
+          <a href="#security">Security</a>
+          <a href="#appearance">Appearance</a>
+          <a href="#danger">Danger zone</a>
+        </nav>
+
+        <div>
+          <section class="settings-card" id="account">
+            <h2>Account</h2>
+            <form id="accountForm">
+              <div class="field">
+                <label for="name">Name</label>
+                <input id="name" type="text" value="Alamin Ali" />
+              </div>
+              <div class="field">
+                <label for="email">Email</label>
+                <input id="email" type="email" value="alamin@example.com" />
+              </div>
+              <div class="field">
+                <label for="picture">Profile picture</label>
+                <input id="picture" type="file" accept="image/*" />
+              </div>
+              <button class="btn btn-primary" type="submit">Save changes</button>
+            </form>
+          </section>
+
+          <section class="settings-card" id="preferences">
+            <h2>Preferences</h2>
+            <p class="muted small" id="savedInterests">No interests selected.</p>
+            <a class="btn btn-secondary btn-sm" href="interests.html">Change interests</a>
+            <div class="switch-row" style="margin-top: 16px">
+              <span>Email notifications</span>
+              <label class="check"><input type="checkbox" id="emailNotif" checked /> <span>Enabled</span></label>
+            </div>
+            <div class="switch-row">
+              <span>New follower alerts</span>
+              <label class="check"><input type="checkbox" id="followNotif" /> <span>Enabled</span></label>
+            </div>
+          </section>
+
+          <section class="settings-card" id="security">
+            <h2>Security</h2>
+            <form id="passwordForm">
+              <div class="field">
+                <label for="current">Current password</label>
+                <input id="current" type="password" placeholder="Enter current password" />
+              </div>
+              <div class="field">
+                <label for="newPass">New password</label>
+                <input id="newPass" type="password" placeholder="Enter new password" />
+              </div>
+              <p class="error-text" id="passError"></p>
+              <button class="btn btn-primary" type="submit">Change password</button>
+            </form>
+          </section>
+
+          <section class="settings-card" id="appearance">
+            <h2>Appearance</h2>
+            <div class="switch-row">
+              <span>Theme</span>
+              <span>
+                <button class="btn btn-secondary btn-sm is-active" type="button" data-theme="light">Light mode</button>
+                <button class="btn btn-secondary btn-sm" type="button" data-theme="dark">Dark mode</button>
+              </span>
+            </div>
+          </section>
+
+          <section class="settings-card danger-zone" id="danger">
+            <h2>Danger zone</h2>
+            <p class="muted">Deleting your account removes all of your notes permanently.</p>
+            <button class="btn btn-danger" type="button" id="deleteAccount">Delete account</button>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <div id="site-footer"></div>
+    <div id="site-bottom-nav"></div>
+
+    <script src="global.js"></script>
+    <script>
+      // Settings page: all interactions are mocked for this prototype
+      document.addEventListener("DOMContentLoaded", function () {
+        var interests = Store.read("notehub_interests", []);
+        if (interests.length) {
+          document.getElementById("savedInterests").textContent = "Your interests: " + interests.join(", ");
+        }
+
+        document.getElementById("accountForm").addEventListener("submit", function (event) {
+          event.preventDefault();
+          showToast("Profile saved (demo)");
+        });
+
+        document.getElementById("passwordForm").addEventListener("submit", function (event) {
+          event.preventDefault();
+          var newPass = document.getElementById("newPass").value;
+          var error = document.getElementById("passError");
+          if (newPass.length < 8) {
+            error.textContent = "New password must be at least 8 characters.";
+            return;
+          }
+          error.textContent = "";
+          showToast("Password changed (demo)");
+        });
+
+        qsa("[data-theme]").forEach(function (button) {
+          button.addEventListener("click", function () {
+            qsa("[data-theme]").forEach(function (other) {
+              other.classList.remove("is-active");
+            });
+            button.classList.add("is-active");
+            Store.write("notehub_theme", button.getAttribute("data-theme"));
+            showToast(button.textContent + " selected (demo)");
+          });
+        });
+
+        document.getElementById("deleteAccount").addEventListener("click", function () {
+          if (window.confirm("Delete your account? This cannot be undone.")) {
+            showToast("Account deletion is disabled in this demo");
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
